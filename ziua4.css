@@ -1,0 +1,220 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+:root {
+    --grey: #f1f0f6;
+    --dark-grey: #8d8d8d;
+    --dark: #000;
+    --green: #81d43a;
+    --light-green: #e3ffcb;
+    --blue: #1775f1;
+    --light-blue: #d0e4ff;
+    --dark-blue: #0c5fcd;
+    --red: #fc3b56;
+    --sidebar-width: 260px;
+    --transition: all 0.3s ease;
+}
+
+body {
+    background: var(--grey);
+    margin-left: var(--sidebar-width);
+}
+
+#sidebar {
+    position: fixed;
+    width: var(--sidebar-width);
+    background: var(--light-blue);
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow-y: auto;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+#sidebar .account-section {
+    padding: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#sidebar .account-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sidebar .account-info .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+#sidebar .account-info .username {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--blue);
+}
+
+#sidebar .account-options {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+#sidebar .account-options li {
+    margin-bottom: 10px;
+}
+
+#sidebar .account-options li a {
+    color: var(--dark);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+#sidebar .account-options li a:hover {
+    color: var(--blue);
+}
+
+
+#sidebar .brand {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 64px;
+    font-weight: 700;
+    color: var(--blue);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#sidebar .brand i {
+    font-size: 1.5rem;
+}
+
+
+#sidebar .side-menu a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    color: var(--dark);
+    transition: var(--transition);
+}
+
+#sidebar .side-menu a span {
+    order: -1;
+}
+
+#sidebar .side-menu a:hover {
+    background: var(--blue);
+    color: white;
+}
+
+
+#sidebar .dropdown-arrow {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+
+#sidebar .has-dropdown.active .dropdown-arrow {
+    transform: rotate(90deg);
+}
+
+#sidebar .side-dropdown {
+    padding-left: 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+#sidebar .has-dropdown.active .side-dropdown {
+    max-height: 500px;
+}
+
+
+#main-content {
+    margin-left: var(--sidebar-width);
+    padding: 20px;
+    background-color: var(--grey);
+    min-height: 100vh;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    width: 300px; 
+    margin-left: calc(var(--sidebar-width) + 10px); 
+    margin-top: 20px;
+    padding: 5px 10px; 
+    border-radius: 20px; 
+    background-color: white; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 5px;
+    border: none; 
+    border-radius: 20px; 
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.search-bar input:focus {
+    border: 2px solid var(--blue); 
+}
+
+.search-bar button {
+    background-color: var(--blue);
+    color: white;
+    border: none;
+    border-radius: 50%; 
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color var(--transition);
+}
+
+.search-bar button:hover {
+    background-color: var(--dark-blue);
+}
+
+
+.sidebar-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    body {
+        margin-left: 0;
+    }
+
+    #sidebar {
+        display: none;
+    }
+
+    #sidebar.active {
+        display: block;
+    }
+
+    .sidebar-toggle {
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+    
+}
