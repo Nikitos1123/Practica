@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link ref="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Document</title>
 </head>
@@ -13,9 +13,10 @@
             <div class="titles">
                 <div class="title-login">Login</div>
             </div>
+        </div>
             <form action="#" class="login-form" autocomplete="off">
                 <div class="input-box">
-                    <input type="text" class="input-field" id="log-email">
+                    <input type="text" class="input-field" id="log-email" required>
                     <label for="log-email" class="label">Email</label>
                     <i class='bx bx-envelope icon'></i>
                 </div>
@@ -34,10 +35,9 @@
                     <button class="btn-submit" id="SignInBtn">Sign In <i class='bx bx-log-in'></i></button>
                 </div>
                 <div class="switch-form">
-                    <span>Don't have an account?  <a href="#">Register</a></span>
+                    <span>Don't have an account?  <a href="D:\Documents\Nikiflex\register\register.html">Register</a></span>
                 </div>
             </form>
-        </div>
     </div>
 
     <script src="script.js"></script>

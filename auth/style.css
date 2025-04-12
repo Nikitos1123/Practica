@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-
 :root {
     --primary-color: #0d1936;
     --secondary-color: #535354;
@@ -11,38 +10,143 @@
     --input-border-color: #e3e4e6;
     --transition-3s: 0.3s;
 }
- 
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
 
-a{
-    text-decoration: none;
-    color: var(--black-color);
-    transition: var(--transition-3s);
-}
-a:hover{
-    text-decoration: underline;
-}
-
-body{
-    font-family: 'Poppins' , sans-serif;
+body {
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: var(--background-color);
 }
-.wrapper{
+
+.wrapper {
     position: relative;
-    width:  430px;
+    width: 430px;
     height: 500px;
     background-color: var(--white-color);
     border-radius: 15px;
-    padding: 120px;
-    border: 1px solid;
+    padding: 40px;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 8px 15px var(--shadow-color);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.form-header .title-login {
+    font-size: 24px;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.input-box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 15px 15px 15px 40px; /* Added left padding for the icon */
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+.input-field:focus {
+    border-color: var(--primary-color);
+}
+
+.input-field:focus + .label,
+.input-field:not(:placeholder-shown) + .label {
+    top: -10px;
+    left: 15px;
+    font-size: 12px;
+    color: var(--primary-color);
+}
+
+.label {
+    position: absolute;
+    top: 50%; /* Keep label inside the input field */
+    left: 40px; /* Adjust label position */
+    font-size: 16px;
+    color: var(--secondary-color);
+    transition: 0.3s;
+    pointer-events: none; /* Prevents label from being selected */
+    transform: translateY(-50%); /* Vertically center the label */
+}
+
+.input-field:focus + .label {
+    top: -10px;
+    left: 15px;
+    font-size: 12px;
+    color: var(--primary-color);
+}
+
+.icon {
+    position: absolute;
+    left: 15px; /* Align the icon to the left side of the input field */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: var(--secondary-color);
+}
+
+.form-cols {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.col-2 {
+    text-align: right;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: var(--secondary-color);
+}
+
+.switch-form {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--primary-color);
+}
+
+.switch-form a {
+    font-weight: 700;
 }
