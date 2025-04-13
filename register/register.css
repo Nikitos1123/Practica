@@ -22,23 +22,28 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: var(--background-color);
 }
 
 .wrapper {
     position: relative;
     width: 430px;
-    height: 500px;
+    /* 
+      You can set a min-height so that the box grows if there's more content
+      or keep it fixed if needed
+    */
+    min-height: 500px;
     background-color: var(--white-color);
     border-radius: 15px;
     padding: 40px;
     border: 1px solid var(--primary-color);
     box-shadow: 0 8px 15px var(--shadow-color);
+    transition: var(--transition-3s);
 }
 
-
 .form-header {
+    position: relative;
     text-align: center;
     margin-bottom: 40px;
 }
@@ -49,6 +54,7 @@ body {
     font-weight: 700;
 }
 
+/* Input Box Style */
 .input-box {
     position: relative;
     margin-bottom: 20px;
@@ -64,10 +70,24 @@ body {
     transition: border 0.3s;
 }
 
+/* Focus on Input Field */
 .input-field:focus {
     border-color: var(--primary-color);
 }
 
+/* Label positions for the floating label effect */
+.label {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    font-size: 16px;
+    color: var(--secondary-color);
+    transition: 0.3s;
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+/* When the input is focused or has text (using placeholder trick) */
 .input-field:focus + .label,
 .input-field:not(:placeholder-shown) + .label {
     top: -10px;
@@ -76,33 +96,17 @@ body {
     color: var(--primary-color);
 }
 
-.label {
-    position: absolute;
-    top: 50%; /* Keep label inside the input field */
-    left: 40px; /* Adjust label position */
-    font-size: 16px;
-    color: var(--secondary-color);
-    transition: 0.3s;
-    pointer-events: none; /* Prevents label from being selected */
-    transform: translateY(-50%); /* Vertically center the label */
-}
-
-.input-field:focus + .label {
-    top: -10px;
-    left: 15px;
-    font-size: 12px;
-    color: var(--primary-color);
-}
-
+/* Icon on the input box */
 .icon {
     position: absolute;
-    left: 15px; /* Align the icon to the left side of the input field */
+    left: 15px;
     top: 50%;
     transform: translateY(-50%);
     font-size: 20px;
     color: var(--secondary-color);
 }
 
+/* Form columns (if needed) */
 .form-cols {
     display: flex;
     justify-content: space-between;
@@ -124,6 +128,7 @@ a:hover {
     color: var(--secondary-color);
 }
 
+
 .btn-submit {
     width: 100%;
     padding: 12px 15px;
@@ -141,6 +146,7 @@ a:hover {
     background-color: var(--secondary-color);
 }
 
+
 .switch-form {
     text-align: center;
     margin-top: 20px;
@@ -151,7 +157,41 @@ a:hover {
 .switch-form a {
     font-weight: 700;
 }
+.wrapper {
+    animation: fadeIn 0.5s ease-in-out;
+   
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.fade-out {
+    animation: fadeOut 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+}
 .input-box.error .input-field {
     border-color: red;
 }
+
+.input-box.error .label {
+    color: red;
+}
+
+
 
