@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 0013f2790f8ced668f87861d55bde735842fcd96
+// Tranziție animată între pagini
 document.querySelectorAll('a[href]').forEach(link => {
     link.addEventListener('click', function (e) {
         const target = this.getAttribute('href');
@@ -15,43 +12,35 @@ document.querySelectorAll('a[href]').forEach(link => {
     });
 });
 
+// Funcție reutilizabilă pentru validare
+function validateField(id, condition) {
+    const field = document.getElementById(id);
+    const inputBox = field.parentElement;
 
-document.getElementById("SignInBtn").addEventListener("click", function(e) {
+    if (condition) {
+        inputBox.classList.remove("error");
+        return true;
+    } else {
+        inputBox.classList.add("error");
+        return false;
+    }
+}
+
+// Click pe Login
+document.getElementById("LoginBtn").addEventListener("click", function (e) {
     e.preventDefault();
 
-    const email = document.getElementById("log-email").value.trim();
-    const password = document.getElementById("log-pass").value.trim();
+    const email = document.getElementById("login-email").value.trim();
+    const password = document.getElementById("login-pass").value.trim();
 
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
-    let isValid = true;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|mail\.ru|yahoo\.com)$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
-    document.querySelectorAll(".input-box").forEach(box => {
-        box.classList.remove("error");
-    });
+    const isEmailValid = validateField("login-email", emailRegex.test(email));
+    const isPasswordValid = validateField("login-pass", passwordRegex.test(password));
 
-    if (!emailRegex.test(email)) {
-        markError("log-email");
-        isValid = false;
-    }
-
-    if (password.length < 6) {
-        markError("log-pass");
-        isValid = false;
-    }
-
-    if (isValid) {
-        console.log("Login successful");
-<<<<<<< HEAD
-        alert("You successfully login!");
-        window.location.href="../Main_Content/website.html"
-
-=======
-        alert("You successfully registered!");
->>>>>>> 0013f2790f8ced668f87861d55bde735842fcd96
+    if (isEmailValid && isPasswordValid) {
+        alert("You successfully logged in!");
+        window.location.href = "../Main_Content/website.html";
     }
 });
-
-function markError(id) {
-    const field = document.getElementById(id);
-    field.parentElement.classList.add("error");
-}
