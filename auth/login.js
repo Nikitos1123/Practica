@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0013f2790f8ced668f87861d55bde735842fcd96
 document.querySelectorAll('a[href]').forEach(link => {
     link.addEventListener('click', function (e) {
         const target = this.getAttribute('href');
@@ -38,9 +41,13 @@ document.getElementById("SignInBtn").addEventListener("click", function(e) {
 
     if (isValid) {
         console.log("Login successful");
+<<<<<<< HEAD
         alert("You successfully login!");
         window.location.href="../Main_Content/website.html"
 
+=======
+        alert("You successfully registered!");
+>>>>>>> 0013f2790f8ced668f87861d55bde735842fcd96
     }
 });
 
