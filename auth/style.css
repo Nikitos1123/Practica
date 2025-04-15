@@ -60,7 +60,7 @@ body {
 
 .input-field {
     width: 100%;
-    padding: 15px 15px 15px 40px; /* Added left padding for the icon */
+    padding: 15px 15px 15px 40px; 
     border: 1px solid var(--input-border-color);
     border-radius: 5px;
     font-size: 16px;
@@ -82,13 +82,13 @@ body {
 
 .label {
     position: absolute;
-    top: 50%; /* Keep label inside the input field */
-    left: 40px; /* Adjust label position */
+    top: 50%; 
+    left: 40px; 
     font-size: 16px;
     color: var(--secondary-color);
     transition: 0.3s;
-    pointer-events: none; /* Prevents label from being selected */
-    transform: translateY(-50%); /* Vertically center the label */
+    pointer-events: none; 
+    transform: translateY(-50%); 
 }
 
 .input-field:focus + .label {
@@ -100,8 +100,7 @@ body {
 
 .icon {
     position: absolute;
-    left: 15px; /* Align the icon to the left side of the input field */
-    top: 50%;
+    left: 15px; 
     transform: translateY(-50%);
     font-size: 20px;
     color: var(--secondary-color);
