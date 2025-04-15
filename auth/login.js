@@ -1,4 +1,4 @@
-// Tranziție animată între pagini
+
 document.querySelectorAll('a[href]').forEach(link => {
     link.addEventListener('click', function (e) {
         const target = this.getAttribute('href');
@@ -12,7 +12,6 @@ document.querySelectorAll('a[href]').forEach(link => {
     });
 });
 
-// Funcție reutilizabilă pentru validare
 function validateField(id, condition) {
     const field = document.getElementById(id);
     const inputBox = field.parentElement;
@@ -26,7 +25,7 @@ function validateField(id, condition) {
     }
 }
 
-// Click pe Login
+
 document.getElementById("LoginBtn").addEventListener("click", function (e) {
     e.preventDefault();
 
