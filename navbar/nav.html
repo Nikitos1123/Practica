@@ -3,27 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
     <link rel="stylesheet" href="nav.css">
-    <title>Responsibe NavBar</title>
 </head>
 <body>
     <nav>
         <ul class="sidebar">
-            <li><a href="#">Credit.md</a></li>
+            <li onclick=hideSidebar()><a href="#"> <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#1f1f1f"><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z"/></svg>Credit.md</a></li>
             <li><a href="#">Blog</a></li>
-            <li><a href="#">Products</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#">Forum</a></li>
-            <li><a href="#">Login</a></li>
+            <li><a href="#../auth/login.html">Log out</a></li>
         </ul>
         <ul>
-    <li><a href="#">Credit.md</a></li>
-    <li><a href="#">Blog</a></li>
-    <li><a href="#">Products</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Forum</a></li>
-    <li><a href="../auth/login.html">Login</a></li>
-</ul>
-</nav>
+            <li><a href="#">Credit.md</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="../auth/login.html">Log out</a></li>
+            <li onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#1f1f1f"><path d="M120-240v-66.67h720V-240H120Zm0-206.67v-66.66h720v66.66H120Zm0-206.66V-720h720v66.67H120Z"/></svg></a></li>
+        </ul>
+    </nav>
 </body>
+<script src="nav.js"></script>
 </html>

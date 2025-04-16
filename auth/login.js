@@ -1,4 +1,3 @@
-
 document.querySelectorAll('a[href]').forEach(link => {
     link.addEventListener('click', function (e) {
         const target = this.getAttribute('href');
@@ -25,20 +24,24 @@ function validateField(id, condition) {
     }
 }
 
-
-document.getElementById("LoginBtn").addEventListener("click", function (e) {
+document.getElementById("SignInBtn").addEventListener("click", function (e) {
     e.preventDefault();
 
-    const email = document.getElementById("login-email").value.trim();
-    const password = document.getElementById("login-pass").value.trim();
+    const email = document.getElementById("log-email").value.trim();
+    const password = document.getElementById("log-pass").value.trim();
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|mail\.ru|yahoo\.com)$/;
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
-    const isEmailValid = validateField("login-email", emailRegex.test(email));
-    const isPasswordValid = validateField("login-pass", passwordRegex.test(password));
+    const isEmailValid = validateField("log-email", emailRegex.test(email));
+    const isPasswordValid = validateField("log-pass", passwordRegex.test(password));
 
-    if (isEmailValid && isPasswordValid) {
+    if (!isEmailValid) {
+        document.getElementById('error');
+    } else if (!isPasswordValid) {
+        document.getElementById('error');
+    } else {
+        document.getElementById('error').innerText = '';
         alert("You successfully logged in!");
         window.location.href = "../Main_Content/website.html";
     }

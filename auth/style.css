@@ -101,11 +101,10 @@ body {
 .icon {
     position: absolute;
     left: 15px; 
-    transform: translateY(-50%);
-    font-size: 20px;
+    top: 50%; 
+    transform: translateY(-50%); 
     color: var(--secondary-color);
 }
-
 .form-cols {
     display: flex;
     justify-content: space-between;
@@ -154,6 +153,7 @@ a:hover {
 .switch-form a {
     font-weight: 700;
 }
+
 .input-box.error .input-field {
     border-color: red;
 }
