@@ -1,14 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" , href="website.css">
-    
-    <title>Document</title>
+    <title>Calculator Credit</title>
+    <link rel="stylesheet" href="website.css">
+    <link rel="stylesheet" href="/navbar/nav.css">
 </head>
 <body>
-    
+    <div class="credit-form">
+        <h1>Credit: <span id="creditValue" class="value-display">5000</span> <strong>Lei</strong></h1>
+        <div class="slider-container">
+            <div class="slider-labels">
+                <span>1000 Lei</span>
+                <span>10000 Lei</span>
+            </div>
+            <input type="range" id="creditSlider" min="1000" max="10000" step="100" value="5000">
+        </div>
+
+        <h2>Termen: <span id="termValue" class="value-display">12</span> Luni</h2>
+        <div class="slider-container">
+            <div class="slider-labels">
+                <span>6 Luni</span>
+                <span>60 Luni</span>
+            </div>
+            <input type="range" id="termSlider" min="6" max="60" step="1" value="12">
+        </div>
+
+        <h3>Rata lunară: <span id="monthlyRate">596</span> Lei</h3>
+        <p class="example">Exemplu reprezentativ de costuri</p>
+        <div class="divider"></div>
+
+        <h3>Cod Personal (13 cifre)</h3>
+        <input type="text" placeholder="Introdu codul" required>
+
+        <div class="phone-input">
+            <span>+373</span>
+            <input type="tel" placeholder="Nr. Telefon" required>
+        </div>
+
+        <button id="submitBtn">TRIMITE CERERE</button>
+    </div>
+    <div id="navbar-container"></div>
+
+    <script src="website.js"></script>
+    <script src="../navbar/nav.js"></script>
 </body>
-<script src="website.js"></script>
 </html>
