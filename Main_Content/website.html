@@ -3,47 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculator de credit pentru a estima ratele lunare">
     <title>Calculator Credit</title>
     <link rel="stylesheet" href="website.css">
-    <link rel="stylesheet" href="/navbar/nav.css">
+    <link rel="stylesheet" href="../navbar/nav.css">
+    <link rel="stylesheet" href="../footer/footer.css">
 </head>
 <body>
-    <div class="credit-form">
-        <h1>Credit: <span id="creditValue" class="value-display">5000</span> <strong>Lei</strong></h1>
-        <div class="slider-container">
-            <div class="slider-labels">
-                <span>1000 Lei</span>
-                <span>10000 Lei</span>
-            </div>
-            <input type="range" id="creditSlider" min="1000" max="10000" step="100" value="5000">
-        </div>
-
-        <h2>Termen: <span id="termValue" class="value-display">12</span> Luni</h2>
-        <div class="slider-container">
-            <div class="slider-labels">
-                <span>6 Luni</span>
-                <span>60 Luni</span>
-            </div>
-            <input type="range" id="termSlider" min="6" max="60" step="1" value="12">
-        </div>
-
-        <h3>Rata lunară: <span id="monthlyRate">596</span> Lei</h3>
-        <p class="example">Exemplu reprezentativ de costuri</p>
-        <div class="divider"></div>
-
-        <h3>Cod Personal (13 cifre)</h3>
-        <input type="text" placeholder="Introdu codul" required>
-
-        <div class="phone-input">
-            <span>+373</span>
-            <input type="tel" placeholder="Nr. Telefon" required>
-        </div>
-
-        <button id="submitBtn">TRIMITE CERERE</button>
-    </div>
     <div id="navbar-container"></div>
+    
+    <div class="main-content">
+        <main class="credit-form">
+            <h1>Credit: <span id="creditValue" class="value-display" aria-live="polite">5000</span> <strong>Lei</strong></h1>
+            <div class="slider-container">
+                <div class="slider-labels">
+                    <span>1000 Lei</span>
+                    <span>10000 Lei</span>
+                </div>
+                <input type="range" id="creditSlider" min="1000" max="10000" step="100" value="5000" 
+                       aria-label="Suma creditului" aria-valuemin="1000" aria-valuemax="10000" aria-valuenow="5000">
+            </div>
+
+            <h2>Termen: <span id="termValue" class="value-display" aria-live="polite">12</span> Luni</h2>
+            <div class="slider-container">
+                <div class="slider-labels">
+                    <span>6 Luni</span>
+                    <span>60 Luni</span>
+                </div>
+                <input type="range" id="termSlider" min="6" max="60" step="1" value="12"
+                       aria-label="Perioada creditului" aria-valuemin="6" aria-valuemax="60" aria-valuenow="12">
+            </div>
+
+            <h3>Rata lunară: <span id="monthlyRate" aria-live="polite">596</span> Lei</h3>
+            <p class="example">Exemplu reprezentativ de costuri</p>
+            <div class="divider"></div>
+
+            <form id="creditForm" action="#" method="POST" novalidate>
+                <div class="form-group">
+                    <label for="personalCode">Cod Personal (13 cifre)</label>
+                    <input type="text" id="personalCode" name="personalCode" 
+                           pattern="[0-9]{13}" 
+                           maxlength="13"
+                           placeholder="Introdu codul" 
+                           required
+                           aria-required="true"
+                           aria-describedby="personalCodeHelp">
+                    <span id="personalCodeHelp" class="help-text">Introduceți exact 13 cifre</span>
+                </div>
+
+                <div class="form-group phone-input">
+                    <label for="phoneNumber">Număr de Telefon</label>
+                    <div class="phone-input-wrapper">
+                        <span aria-hidden="true">+373</span>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" 
+                               pattern="[0-9]{8,9}"
+                               placeholder="Nr. Telefon" 
+                               required
+                               aria-required="true"
+                               aria-describedby="phoneHelp">
+                    </div>
+                    <span id="phoneHelp" class="help-text">Introduceți 8-9 cifre</span>
+                </div>
+
+                <button type="submit" id="submitBtn" aria-label="Trimite cererea de credit">TRIMITE CERERE</button>
+            </form>
+        </main>
+    </div>
+
+    <div id="footer-container"></div>
 
     <script src="website.js"></script>
     <script src="../navbar/nav.js"></script>
+    <script>
+        // Load footer
+        document.addEventListener('DOMContentLoaded', function() {
+            const footerContainer = document.getElementById('footer-container');
+            if (footerContainer) {
+                fetch('../footer/footer.html')
+                    .then(response => response.text())
+                    .then(data => {
+                        footerContainer.innerHTML = data;
+                    })
+                    .catch(error => console.error('Eroare la încărcarea footer-ului:', error));
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+    const navbarContainer = document.getElementById('navbar-container');
+    if (navbarContainer) {
+        fetch('../navbar/nav.html')  
+            .then(response => response.text())
+            .then(data => {
+                navbarContainer.innerHTML = data;
+            })
+            .catch(error => console.error('Eroare la încărcarea navbar-ului:', error));
+    } else {
+        console.error('Elementul navbar-container nu a fost găsit');
+    }
+});
+
+    </script>
 </body>
 </html>
