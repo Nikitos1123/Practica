@@ -67,94 +67,30 @@ document.getElementById("SignInBtn").addEventListener("click", function (e) {
     const email = document.getElementById("log-email").value.trim();
     const password = document.getElementById("log-pass").value.trim();
 
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|mail\.ru|yahoo\.com)$/;
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    let isValid = true;
 
-    const isEmailValid = validateField("log-email", emailRegex.test(email));
-    const isPasswordValid = validateField("log-pass", passwordRegex.test(password));
+    document.querySelectorAll(".input-box").forEach(box => {
+        box.classList.remove("error");
+    });
 
-    if (!isEmailValid || !isPasswordValid) {
-        if (!isEmailValid) {
-            return;
-        }
-        if (!isPasswordValid) {
-            return;
-        }
+    if (!emailRegex.test(email)) {
+        markError("log-email");
+        isValid = false;
     }
 
-    setLoading(true);
-    clearError();
-
-    // First check localStorage for the user
-    const storedUsersData = localStorage.getItem('usersData');
-    if (storedUsersData) {
-        const storedUsers = JSON.parse(storedUsersData);
-        const storedUser = storedUsers.users.find(u => u.email === email && u.password === password);
-        if (storedUser) {
-            handleSuccessfulLogin(storedUser);
-            return;
-        }
+    if (password.length < 6) {
+        markError("log-pass");
+        isValid = false;
     }
 
-    // If not found in localStorage, check the JSON file
-    fetch('../auth/users.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            const user = data.users.find(u => u.email === email && u.password === password);
-            
-            if (user) {
-                handleSuccessfulLogin(user);
-            } else {
-                throw new Error('Invalid credentials');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            if (error.message === 'Invalid credentials') {
-                showError("Invalid email or password");
-            } else {
-                showError("An error occurred. Please try again later.");
-            }
-            setLoading(false);
-        });
+    if (isValid) {
+        console.log("Login successful");
+        alert("You successfully registered!");
+    }
 });
 
-function handleSuccessfulLogin(user) {
-    clearError();
-    sessionStorage.setItem('currentUser', JSON.stringify({
-        email: user.email,
-        name: user.name,
-        loginTime: new Date().toISOString()
-    }));
-    
-    const wrapper = document.querySelector('.wrapper');
-    if (wrapper) {
-        wrapper.classList.add('fade-out');
-        setTimeout(() => {
-            window.location.href = "../Main_Content/website.html";
-        }, 500);
-    } else {
-        window.location.href = "../Main_Content/website.html";
-    }
+function markError(id) {
+    const field = document.getElementById(id);
+    field.parentElement.classList.add("error");
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    const currentUser = sessionStorage.getItem('currentUser');
-    if (currentUser) {
-        const userData = JSON.parse(currentUser);
-        const loginTime = new Date(userData.loginTime);
-        const currentTime = new Date();
-        const hoursSinceLogin = (currentTime - loginTime) / (1000 * 60 * 60);
-
-        if (hoursSinceLogin < 24) {
-            window.location.href = "../Main_Content/website.html";
-        } else {
-            sessionStorage.removeItem('currentUser');
-        }
-    }
-});

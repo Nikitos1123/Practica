@@ -137,4 +137,8 @@ document.getElementById("RegisterBtn").addEventListener("click", function (e) {
             }
             setLoading(false);
         });
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> e3eb7da15f03ce2e18fd1fb907ce10f4a02f1019
