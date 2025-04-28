@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 :root {
-    --primary-color:  #0d1936;
+    --primary-color: #0d1936;
     --secondary-color: #535354;
     --background-color: #efefef;
     --shadow-color: rgba(0, 0, 0, 0.1);
@@ -185,8 +185,4 @@ a:hover {
 
 .input-box.error .label {
     color: red;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> e3eb7da15f03ce2e18fd1fb907ce10f4a02f1019

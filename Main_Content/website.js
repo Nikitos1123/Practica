@@ -146,26 +146,26 @@ function loadPageContent() {
                 creditAmount: creditSlider.value,
                 term: termSlider.value,
                 personalCode: personalCodeInput.value,
-                phoneNumber: phoneNumberInput.value
+                phoneNumber: phoneNumberInput.value,
+                date: new Date().toISOString() // Add current date
             };
 
-<<<<<<< HEAD
-            // Get current loans from localStorage
-            let loans = JSON.parse(localStorage.getItem('userLoans')) || [];
-            
-            // Add new loan
-            const newLoan = {
-                amount: parseInt(creditSlider.value),
-                duration: parseInt(termSlider.value),
-                date: new Date().toISOString()
-            };
-            
-            loans.push(newLoan);
-            localStorage.setItem('userLoans', JSON.stringify(loans));
-=======
-            // Here you would typically send the data to a server
-            console.log('Form data:', formData);
->>>>>>> e3eb7da15f03ce2e18fd1fb907ce10f4a02f1019
+            // Save the credit to localStorage
+            const currentUser = sessionStorage.getItem('currentUser');
+            if (currentUser) {
+                const userData = JSON.parse(currentUser);
+                let userLoans = JSON.parse(localStorage.getItem('userLoans') || '[]');
+                
+                // Add new loan
+                userLoans.push({
+                    amount: parseInt(formData.creditAmount),
+                    duration: parseInt(formData.term),
+                    date: formData.date
+                });
+                
+                // Save updated loans
+                localStorage.setItem('userLoans', JSON.stringify(userLoans));
+            }
 
             // Show success message
             alert(`Cererea a fost trimisă cu succes!\nSuma: ${creditValue.textContent} Lei\nTermen: ${termValue.textContent} Luni`);
@@ -199,7 +199,3 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error('Elementul navbar-container nu a fost găsit');
     }
 });
-<<<<<<< HEAD
-=======
-
->>>>>>> e3eb7da15f03ce2e18fd1fb907ce10f4a02f1019

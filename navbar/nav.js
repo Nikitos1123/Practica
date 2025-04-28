@@ -63,8 +63,4 @@ document.addEventListener('DOMContentLoaded', function() {
         loginLi.appendChild(loginLink);
         nav.appendChild(loginLi);
     }
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> e3eb7da15f03ce2e18fd1fb907ce10f4a02f1019

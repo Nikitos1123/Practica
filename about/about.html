@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Despre Noi - Credit Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="about.css">
     <link rel="stylesheet" href="../navbar/nav.css">
     <link rel="stylesheet" href="../footer/footer.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="navbar-container"></div>
@@ -68,24 +68,23 @@
 
     <div id="footer-container"></div>
 
+    <script src="../navbar/nav.js"></script>
     <script>
+        // Load navbar
         document.addEventListener('DOMContentLoaded', function() {
-            // Load navbar
             const navbarContainer = document.getElementById('navbar-container');
             if (navbarContainer) {
                 fetch('../navbar/nav.html')
                     .then(response => response.text())
                     .then(data => {
                         navbarContainer.innerHTML = data;
-                        // Load navbar script after navbar HTML is loaded
-                        const navScript = document.createElement('script');
-                        navScript.src = '../navbar/nav.js';
-                        document.body.appendChild(navScript);
                     })
-                    .catch(error => console.error('Error loading navbar:', error));
+                    .catch(error => console.error('Eroare la încărcarea navbar-ului:', error));
             }
+        });
 
-            // Load footer
+        // Load footer
+        document.addEventListener('DOMContentLoaded', function() {
             const footerContainer = document.getElementById('footer-container');
             if (footerContainer) {
                 fetch('../footer/footer.html')
@@ -93,7 +92,7 @@
                     .then(data => {
                         footerContainer.innerHTML = data;
                     })
-                    .catch(error => console.error('Error loading footer:', error));
+                    .catch(error => console.error('Eroare la încărcarea footer-ului:', error));
             }
         });
     </script>

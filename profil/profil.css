@@ -8,6 +8,8 @@ body {
     color: white;
     display: flex;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
 }
 
 body::before {
@@ -21,6 +23,10 @@ body::before {
     z-index: -1;
 }
 
+#navbar-container {
+    width: 100%;
+}
+
 .profile-container {
     max-width: 800px;
     margin: 100px auto 20px;
@@ -29,6 +35,12 @@ body::before {
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     color: #333;
+    flex: 1;
+}
+
+#footer-container {
+    margin-top: auto;
+    width: 100%;
 }
 
 h1 {

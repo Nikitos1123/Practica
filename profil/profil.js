@@ -16,7 +16,7 @@ function updateStats() {
     const avgDuration = totalLoans > 0 ? loans.reduce((sum, loan) => sum + loan.duration, 0) / totalLoans : 0;
 
     document.getElementById('totalLoans').textContent = totalLoans;
-    document.getElementById('totalAmount').textContent = totalAmount.toLocaleString();
+    document.getElementById('totalAmount').textContent = totalAmount.toLocaleString('ro-RO');
     document.getElementById('avgDuration').textContent = avgDuration.toFixed(1);
 }
 
@@ -39,12 +39,14 @@ function displayLoans() {
         const formattedDate = new Date(loan.date).toLocaleDateString('ro-RO', {
             year: 'numeric',
             month: 'long',
-            day: 'numeric'
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
         });
 
         loanItem.innerHTML = `
             <div class="loan-header">
-                <div class="loan-amount">${loan.amount.toLocaleString()} Lei</div>
+                <div class="loan-amount">${loan.amount.toLocaleString('ro-RO')} Lei</div>
                 <div class="loan-duration">${loan.duration} Luni</div>
             </div>
             <div class="loan-date">Data: ${formattedDate}</div>

@@ -1,0 +1,76 @@
+/* Custom styles for Termeni și Condiții page */
+.terms-container {
+    background: #fff;
+    border-radius: 24px;
+    padding: 48px 48px;
+    max-width: 1200px;
+    margin: 60px auto 40px auto;
+    box-shadow: 0 8px 32px rgba(30,40,90,0.10);
+    color: #23243a;
+    font-size: 1.22rem;
+    line-height: 1.85;
+    border: 1.5px solid #e3e8f7;
+    position: relative;
+    z-index: 2;
+}
+
+.terms-container h1, .terms-container h2 {
+    color: #0d1936;
+    text-align: left;
+    margin-bottom: 24px;
+    font-weight: 700;
+}
+
+.terms-container h1 {
+    font-size: 2.2rem;
+    text-align: center;
+}
+
+.terms-container h2 {
+    font-size: 1.3rem;
+    margin-top: 36px;
+}
+
+.terms-container p {
+    margin-bottom: 16px;
+}
+
+.terms-container section {
+    margin-bottom: 32px;
+}
+
+.terms-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 28px 0;
+    background: #f8fafd;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 1.05rem;
+    box-shadow: 0 2px 8px rgba(30,40,90,0.06);
+}
+.terms-container th, .terms-container td {
+    border: 1px solid #e0e4ea;
+    padding: 14px 18px;
+    text-align: left;
+}
+.terms-container th {
+    background: #eaf0fa;
+    font-weight: 700;
+}
+.terms-container tr:nth-child(even) {
+    background: #f4f7fb;
+}
+
+@media (max-width: 900px) {
+    .terms-container {
+        padding: 18px 4vw;
+        max-width: 99vw;
+    }
+    .terms-container h1 {
+        font-size: 1.3rem;
+    }
+    .terms-container h2 {
+        font-size: 1.05rem;
+    }
+}
