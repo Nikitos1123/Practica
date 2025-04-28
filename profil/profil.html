@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Utilizator</title>
+    <link rel="stylesheet" href="profil.css">
+    <link rel="stylesheet" href="../navbar/nav.css">
+    <link rel="stylesheet" href="../footer/footer.css">
+</head>
+<body>
+    <div id="navbar-container"></div>
+    
+    <div class="profile-container">
+        <h1>Istoricul Creditelor</h1>
+        
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-value" id="totalLoans">0</div>
+                <div class="stat-label">Credite Totale</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="totalAmount">0</div>
+                <div class="stat-label">Sumă Totală (Lei)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="avgDuration">0</div>
+                <div class="stat-label">Durată Medie (Luni)</div>
+            </div>
+        </div>
+
+        <div class="loans-list" id="loansList">
+            <!-- Loan items will be added here dynamically -->
+        </div>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script src="profil.js"></script>
+    <script src="../navbar/nav.js"></script>
+    <script>
+        // Load navbar
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbarContainer = document.getElementById('navbar-container');
+            if (navbarContainer) {
+                fetch('../navbar/nav.html')
+                    .then(response => response.text())
+                    .then(data => {
+                        navbarContainer.innerHTML = data;
+                        // Update the Credit.md link to point to the main page
+                        const creditLinks = document.querySelectorAll('a[href="#"]');
+                        creditLinks.forEach(link => {
+                            if (link.textContent.includes('Credit.md')) {
+                                link.href = '../Main_Content/website.html';
+                            }
+                        });
+                    })
+                    .catch(error => console.error('Eroare la încărcarea navbar-ului:', error));
+            }
+        });
+
+        // Load footer
+        document.addEventListener('DOMContentLoaded', function() {
+            const footerContainer = document.getElementById('footer-container');
+            if (footerContainer) {
+                fetch('../footer/footer.html')
+                    .then(response => response.text())
+                    .then(data => {
+                        footerContainer.innerHTML = data;
+                    })
+                    .catch(error => console.error('Eroare la încărcarea footer-ului:', error));
+            }
+        });
+    </script>
+</body>
+</html>

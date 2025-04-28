@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Despre Noi - Credit Calculator</title>
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="../navbar/nav.css">
+    <link rel="stylesheet" href="../footer/footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <div class="about-container">
+        <div class="about-content">
+            <h1>Despre Noi</h1>
+            
+            <section class="about-section">
+                <h2>Misiunea Noastră</h2>
+                <p>Ne dedicăm să oferim soluții financiare accesibile și transparente pentru toți clienții noștri. Credem în construirea unui viitor financiar solid prin împrumuturi responsabile și consiliere personalizată.</p>
+            </section>
+
+            <section class="about-section">
+                <h2>De Ce Să Ne Alegeți</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Rapid și Simplu</h3>
+                        <p>Proces de aplicare online rapid și răspuns în câteva minute.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Transparent</h3>
+                        <p>Fără costuri ascunse, toate detaliile sunt clare de la început.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Flexibil</h3>
+                        <p>Opțiuni de credit adaptate nevoilor dumneavoastră.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Suport 24/7</h3>
+                        <p>Echipa noastră este mereu disponibilă să vă ajute.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-section">
+                <h2>Cum Funcționează</h2>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Completați Formularul</h3>
+                        <p>Introduceți suma dorită și perioada de rambursare.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Verificare Rapidă</h3>
+                        <p>Procesăm cererea dumneavoastră în câteva minute.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Primire Credit</h3>
+                        <p>După aprobare, primiți banii direct în cont.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load navbar
+            const navbarContainer = document.getElementById('navbar-container');
+            if (navbarContainer) {
+                fetch('../navbar/nav.html')
+                    .then(response => response.text())
+                    .then(data => {
+                        navbarContainer.innerHTML = data;
+                        // Load navbar script after navbar HTML is loaded
+                        const navScript = document.createElement('script');
+                        navScript.src = '../navbar/nav.js';
+                        document.body.appendChild(navScript);
+                    })
+                    .catch(error => console.error('Error loading navbar:', error));
+            }
+
+            // Load footer
+            const footerContainer = document.getElementById('footer-container');
+            if (footerContainer) {
+                fetch('../footer/footer.html')
+                    .then(response => response.text())
+                    .then(data => {
+                        footerContainer.innerHTML = data;
+                    })
+                    .catch(error => console.error('Error loading footer:', error));
+            }
+        });
+    </script>
+</body>
+</html>

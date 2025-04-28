@@ -18,6 +18,10 @@
 }
 
 body {
+    background-image: url('https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
@@ -35,8 +39,16 @@ body {
     padding: 40px;
     border: 1px solid var(--primary-color);
     box-shadow: 0 8px 15px var(--shadow-color);
+    transition: all 0.5s ease-in-out;
+    opacity: 1;
+    transform: translateY(0);
 }
 
+.wrapper.fade-out {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+}
 
 .form-header {
     text-align: center;
@@ -56,7 +68,7 @@ body {
 
 .input-field {
     width: 100%;
-    padding: 15px 15px 15px 40px; /* Added left padding for the icon */
+    padding: 15px 15px 15px 40px; 
     border: 1px solid var(--input-border-color);
     border-radius: 5px;
     font-size: 16px;
@@ -78,13 +90,13 @@ body {
 
 .label {
     position: absolute;
-    top: 50%; /* Keep label inside the input field */
-    left: 40px; /* Adjust label position */
+    top: 50%; 
+    left: 40px; 
     font-size: 16px;
     color: var(--secondary-color);
     transition: 0.3s;
-    pointer-events: none; /* Prevents label from being selected */
-    transform: translateY(-50%); /* Vertically center the label */
+    pointer-events: none; 
+    transform: translateY(-50%); 
 }
 
 .input-field:focus + .label {
@@ -96,13 +108,11 @@ body {
 
 .icon {
     position: absolute;
-    left: 15px; /* Align the icon to the left side of the input field */
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
+    left: 15px; 
+    top: 50%; 
+    transform: translateY(-50%); 
     color: var(--secondary-color);
 }
-
 .form-cols {
     display: flex;
     justify-content: space-between;
@@ -151,7 +161,7 @@ a:hover {
 .switch-form a {
     font-weight: 700;
 }
+
 .input-box.error .input-field {
     border-color: red;
 }
-
