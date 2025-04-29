@@ -42,15 +42,16 @@ function loadPageContent() {
     const creditForm = document.getElementById('creditForm');
     const creditSlider = document.getElementById('creditSlider');
     const termSlider = document.getElementById('termSlider');
+    const interestRateSlider = document.getElementById('interestRateSlider');
     const creditValue = document.getElementById('creditValue');
     const termValue = document.getElementById('termValue');
+    const interestRateValue = document.getElementById('interestRateValue');
     const monthlyRate = document.getElementById('monthlyRate');
     const submitBtn = document.getElementById('submitBtn');
     const personalCodeInput = document.getElementById('personalCode');
     const phoneNumberInput = document.getElementById('phoneNumber');
 
     // Constants
-    const annualInterestRate = 0.05;
     const MIN_CREDIT = 1000;
     const MAX_CREDIT = 10000;
     const MIN_TERM = 6;
@@ -60,18 +61,34 @@ function loadPageContent() {
     function updateCalculations() {
         const amount = parseInt(creditSlider.value);
         const term = parseInt(termSlider.value);
+        const monthlyInterestRate = parseFloat(interestRateSlider.value) / 100; // Convert percentage to decimal
 
         // Update displayed values with proper formatting
         creditValue.textContent = amount.toLocaleString('ro-RO');
         termValue.textContent = term;
+        interestRateValue.textContent = monthlyInterestRate.toFixed(2);
 
         // Calculate monthly payment
-        const monthlyInterestRate = annualInterestRate / 12;
         const monthlyPayment = (amount * monthlyInterestRate) / 
             (1 - Math.pow(1 + monthlyInterestRate, -term));
 
+        // Calculate monthly interest amount (this changes based on remaining balance)
+        // For the first month, it's the full amount * monthly rate
+        const firstMonthInterest = amount * monthlyInterestRate;
+        
+        // For the last month, it's much smaller
+        const lastMonthInterest = (amount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, -term));
+        
+        // Show the average monthly interest
+        const averageMonthlyInterest = (firstMonthInterest + lastMonthInterest) / 2;
+
         // Update monthly rate with proper formatting
         monthlyRate.textContent = monthlyPayment.toFixed(2);
+
+        // Update interest rates display
+        document.getElementById('monthlyInterestRate').textContent = (monthlyInterestRate * 100).toFixed(2);
+        document.getElementById('annualInterestRate').textContent = (monthlyInterestRate * 12 * 100).toFixed(2);
+        document.getElementById('monthlyInterestAmount').textContent = averageMonthlyInterest.toFixed(2);
     }
 
     // Validate personal code
@@ -184,6 +201,7 @@ function loadPageContent() {
     // Add event listeners for sliders
     creditSlider.addEventListener('input', updateCalculations);
     termSlider.addEventListener('input', updateCalculations);
+    interestRateSlider.addEventListener('input', updateCalculations);
 }
 
 document.addEventListener('DOMContentLoaded', function () {

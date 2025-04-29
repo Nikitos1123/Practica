@@ -18,11 +18,11 @@
             <h1>Credit: <span id="creditValue" class="value-display" aria-live="polite">5000</span> <strong>Lei</strong></h1>
             <div class="slider-container">
                 <div class="slider-labels">
-                    <span>1000 Lei</span>
                     <span>10000 Lei</span>
+                    <span>100000 Lei</span>
                 </div>
-                <input type="range" id="creditSlider" min="1000" max="10000" step="100" value="5000" 
-                       aria-label="Suma creditului" aria-valuemin="1000" aria-valuemax="10000" aria-valuenow="5000">
+                <input type="range" id="creditSlider" min="10000" max="100000" step="1000" value="50000" 
+                       aria-label="Suma creditului" aria-valuemin="10000" aria-valuemax="100000" aria-valuenow="50000">
             </div>
 
             <h2>Termen: <span id="termValue" class="value-display" aria-live="polite">12</span> Luni</h2>
@@ -35,7 +35,22 @@
                        aria-label="Perioada creditului" aria-valuemin="6" aria-valuemax="60" aria-valuenow="12">
             </div>
 
+            <h2>Rata lunară a dobânzii: <span id="interestRateValue" class="value-display" aria-live="polite">0.42</span>%</h2>
+            <div class="slider-container">
+                <div class="slider-labels">
+                    <span>0.1%</span>
+                    <span>2%</span>
+                </div>
+                <input type="range" id="interestRateSlider" min="0.1" max="2" step="0.01" value="0.42"
+                       aria-label="Rata lunară a dobânzii" aria-valuemin="0.1" aria-valuemax="2" aria-valuenow="0.42">
+            </div>
+
             <h3>Rata lunară: <span id="monthlyRate" aria-live="polite">596</span> Lei</h3>
+            <div class="interest-rates">
+                <p>Rata lunară a dobânzii: <span id="monthlyInterestRate" aria-live="polite">0.42</span></p>
+                <p>Rata anuală a dobânzii: <span id="annualInterestRate" aria-live="polite">5.00</span></p>
+                <p>Dobânda lunară: <span id="monthlyInterestAmount" aria-live="polite">0</span></p>
+            </div>
             <div class="divider"></div>
 
             <form id="creditForm" action="#" method="POST" novalidate>
@@ -65,7 +80,7 @@
                     <span id="phoneHelp" class="help-text">Introduceți 8-9 cifre</span>
                 </div>
 
-                <button type="submit" id="submitBtn" aria-label="Trimite cererea de credit">TRIMITE CERERE</button>
+                <button type="submit" id="submitBtn" aria-label="Trimite cererea de credit">Solicită Ofertă</button>
             </form>
         </main>
     </div>
